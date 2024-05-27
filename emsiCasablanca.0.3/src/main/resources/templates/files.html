@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Thymeleaf pour FilesController</title>
+    <script>
+        async function uploadFile(event) {
+            event.preventDefault();
+            const formData = new FormData();
+            const fileInput = document.getElementById('fileInput');
+            formData.append('file', fileInput.files[0]);
+
+            try {
+                const response = await fetch('/api/uploadFilesIntoDB', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    const fileName = await response.text();
+                    displayFile(fileName);
+                } else {
+                    alert('Upload failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Upload failed');
+            }
+        }
+
+        function displayFile(fileName) {
+            document.getElementById('uploadedFile').style.display = 'block';
+            document.getElementById('fileName').textContent = fileName;
+            document.getElementById('downloadLink').href = '/api/getFileByName/' + fileName;
+        }
+    </script>
+</head>
+<body>
+<h1>Upload de fichiers</h1>
+<form id="uploadForm" onsubmit="uploadFile(event)">
+    <input type="file" name="file" id="fileInput" required>
+    <input type="submit" value="Upload">
+</form>
+
+<div id="uploadedFile" style="display: none;">
+    <h2>Fichier téléchargé :</h2>
+    <p id="fileName"></p>
+    <a id="downloadLink" href="" download>Télécharger</a>
+</div>
+</body>
+</html>

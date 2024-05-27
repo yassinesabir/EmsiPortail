@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <title>Student Registration</title>
+</head>
+<body>
+<div class="container">
+    <div class="register">
+        <div class="logo">
+            <img th:src="@{/images/logo.png}" alt="Logo">
+        </div>
+        <form th:action="@{/register/student}" method="post" class="register-form">
+            <h2 class="title">Student Registration</h2>
+            <!-- Form fields for student registration -->
+            <!-- You can adjust these fields based on your requirements -->
+            <div class="input-field">
+                <i class="fas fa-user"></i>
+                <input type="text" name="firstname" placeholder="First Name"/>
+            </div>
+            <div class="input-field">
+                <i class="fas fa-user"></i>
+                <input type="text" name="lastname" placeholder="Last Name"/>
+            </div>
+            <div class="input-field">
+                <i class="fas fa-user"></i>
+                <input type="text" name="username" placeholder="Username"/>
+            </div>
+            <div class="input-field">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" placeholder="Email"/>
+            </div>
+            <div class="input-field">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" placeholder="Password"/>
+            </div>
+            <!-- Additional fields for student registration -->
+            <!-- You can adjust these fields based on your requirements -->
+            <div class="input-field">
+                <i class="fas fa-phone"></i>
+                <input type="text" name="phone" placeholder="Phone"/>
+            </div>
+            <div class="input-field">
+                <i class="fas fa-user-graduate"></i>
+                <input type="text" name="sector" placeholder="Sector"/>
+            </div>
+            <div class="input-field">
+                <i class="fas fa-level-up-alt"></i>
+                <input type="text" name="level" placeholder="Level"/>
+            </div>
+            <input type="submit" value="Register" class="btn">
+        </form>
+    </div>
+    <div class="image-container">
+        <img th:src="@{/images/register_image.png}" alt="Image Description" class="image">
+    </div>
+</div>
+</body>
+</html>
